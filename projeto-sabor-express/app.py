@@ -1,8 +1,8 @@
 import os
 
-restaurantes = [{'nome':'Praça', 'categoria':'Japonesa', 'ativo':False}, 
-                    {'nome':'Pizza Superma', 'categoria':'Pizza', 'ativo':True},
-                    {'nome':'Cantina', 'categoria':'Italiano', 'ativo':False}]
+restaurantes = [{'nome':'Ça-Va', 'categoria':'Frances', 'ativo':False},
+                {'nome':'Pizzaria em Família', 'categoria':'Italiana', 'ativo':True}, 
+                {'nome':'Marmita', 'categoria':'Brasileira', 'ativo':True}]
 
 def exibir_nome_do_programa():
     print("""
@@ -34,7 +34,7 @@ def opcao_invalida():
 def exibir_subtitulo(texto):
     os.system('cls')
     print(texto)
-    print
+    print()
 
 def cadastrar_novo_restaurante():
     exibir_subtitulo('Cadastro de novos restaurantes')
@@ -43,6 +43,7 @@ def cadastrar_novo_restaurante():
     dados_do_restaurante = {'nome':nome_do_restaurante, 'categoria':categoria, 'ativo':False}
     restaurantes.append(dados_do_restaurante)
     print(f'O restaurante {nome_do_restaurante} foi cadastrado com sucesso!')
+    
     voltar_ao_menu_principal()
 
 def listar_restaurantes():
@@ -50,7 +51,7 @@ def listar_restaurantes():
     for restaurante in restaurantes:
         nome_restaurante = restaurante['nome']
         categoria_restaurante = restaurante['categoria']
-        status_restaurante = restaurante['status']
+        status_restaurante = restaurante['ativo']
         print(f'- {nome_restaurante} | {categoria_restaurante} | {status_restaurante}')
     voltar_ao_menu_principal()
 
