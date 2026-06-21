@@ -1,8 +1,8 @@
 import os
 
-restaurantes = [{'nome':'Ça-Va', 'categoria':'Frances', 'status':False},
-                {'nome':'Pizzaria em Família', 'categoria':'Italiana', 'status':True}, 
-                {'nome':'Marmita', 'categoria':'Brasileira', 'status':True}]
+restaurantes = [{'nome':'Ça-Va', 'categoria':'Frances', 'ativo':False},
+                {'nome':'Pizzaria em Família', 'categoria':'Italiana', 'ativo':True}, 
+                {'nome':'Marmita', 'categoria':'Brasileira', 'ativo':True}]
 
 def exibir_nome_do_programa():
     print("""
@@ -34,30 +34,30 @@ def opcao_invalida():
 def exibir_subtitulo(texto):
     os.system('cls')
     print(texto)
-    print
+    print()
 
 def cadastrar_novo_restaurante():
     exibir_subtitulo('Cadastro de novos restaurantes')
     nome_do_restaurante = input('Digite o nome do restaurante que deseja cadastrar: ')
-    restaurantes.append(nome_do_restaurante)
-    print(f'O restaurante: {nome_do_restaurante} foi cadastrado com sucesso!')
+    categoria = input(f'Digite o nome da categoria do restaurante {nome_do_restaurante}:')
+    dados_do_restaurante = {'nome':nome_do_restaurante, 'categoria':categoria, 'ativo':False}
+    restaurantes.append(dados_do_restaurante)
+    print(f'O restaurante {nome_do_restaurante} foi cadastrado com sucesso!')
+    
     voltar_ao_menu_principal()
 
 def listar_restaurantes():
     exibir_subtitulo('Listando os restaurantes:\n')
-
     for restaurante in restaurantes:
         nome_restaurante = restaurante['nome']
         categoria_restaurante = restaurante['categoria']
-        status_restaurante = restaurante['status']
+        status_restaurante = restaurante['ativo']
         print(f'- {nome_restaurante} | {categoria_restaurante} | {status_restaurante}')
-
     voltar_ao_menu_principal()
 
 def escolher_opcao():
     try:
         opcao_escolhida = int(input('Escolha uma opção: '))
-
         if opcao_escolhida == 1: 
             cadastrar_novo_restaurante()
         elif opcao_escolhida == 2: 
